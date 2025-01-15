@@ -73,7 +73,7 @@ docker-compose up -d --build api
 ```
 
 The launched API might be accessible at this address: 
-http://SERVER_ADDRESS:5100
+http://SERVER_ADDRESS:5101
 
 The SERVER_ADDRESS will be the one of the computer used to launch the Docker command.
 
@@ -92,8 +92,8 @@ pip install -r requirements-app.txt
 docker-compose up -d --build app
 ```
 
-The launched app might be accessible at this address: 
-http://SERVER_ADDRESS:5100/
+The launched app will be accessible at this address: 
+http://SERVER_ADDRESS:5101/
 
 The SERVER_ADDRESS will be the one of the computer used to launch the Docker command.
 
@@ -115,11 +115,11 @@ python rte_poc_simulator_consol.py
 
 ### To launch the simulator app (BEST APPROACH)
 Open a web browser and navigate to the URL returned by Docker after running the containers. 
-This URL will typically be `http://localhost:5100/` unless you've configured a different port.
+This URL will typically be `http://localhost:5101/` unless you've configured a different port.
 
 Note: If you're running Docker on a remote machine or using Docker Toolbox on Windows, 
 you may need to replace 'localhost' with the appropriate IP address.
-For example : http://SERVER_ADDRESS:5100/  with **SERVER_ADDRESS** the one of your remote machine.
+For example : http://SERVER_ADDRESS:5101/  with **SERVER_ADDRESS** the one of your remote machine.
 
 ### Run the simulator in your terminal (optional)
 ```commandline
