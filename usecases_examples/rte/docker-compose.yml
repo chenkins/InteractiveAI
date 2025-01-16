@@ -11,7 +11,8 @@ services:
       - "5101:5000"
     volumes:
       - .:/code
-
+    networks:
+      - cab-standalone_default
   api:
     build:
       context: .
@@ -23,3 +24,11 @@ services:
       - "5101:5000"
     volumes:
       - .:/code
+    networks:
+      - cab-standalone_default
+
+# allow for communication between simulator and cab
+networks:
+  cab-standalone_default:
+    name: cab-standalone_default
+    external: true
