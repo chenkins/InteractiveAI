@@ -15,7 +15,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 url=$1 
 if [[ -z $url ]]
 then
-	url="http://localhost"
+  # tweak /etc/hosts to run from docker host!
+	url="http://frontend"
 fi
 (
 	cd bundles
