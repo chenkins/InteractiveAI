@@ -46,7 +46,7 @@ services:
       - TZ=UTC   # Set timezone to UTC
     command: sh -c "./entrypoint.sh"
     ports:
-      - 5000:5000
+      - 5001:5000
     volumes:
       - ../../../backend/event-service:/code
     depends_on:
@@ -144,6 +144,8 @@ services:
       - './nginx-cors-permissive.conf:/etc/nginx/conf.d/default.conf'
     ports:
       - '3200:80'
+      # tokens are issued for frontend:80 (see KEYCLOAK_SERVER_URL below), need to match the URL
+      - '80:80'
     depends_on:
       - cabrecommendation
       - cabevent
@@ -159,6 +161,8 @@ services:
     build:
       context: ../../../backend
       dockerfile: Recommendation-Service-Dockerfile
+    # fix platform as otherwise, we get compile errors on macOS....
+    platform: "linux/amd64"
     restart: unless-stopped
     environment:
       - GATEWAY_SERVICE=http://frontend:80

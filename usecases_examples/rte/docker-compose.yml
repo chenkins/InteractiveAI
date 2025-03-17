@@ -8,10 +8,11 @@ services:
     container_name: rte-simulator-app
     restart: always
     ports:
-      - "5100:5000"
+      - "5101:5000"
     volumes:
       - .:/code
-
+    networks:
+      - cab-standalone_default
   api:
     build:
       context: .
@@ -20,6 +21,14 @@ services:
     container_name: rte-simulator-api
     restart: always
     ports:
-      - "5100:5000"
+      - "5101:5000"
     volumes:
       - .:/code
+    networks:
+      - cab-standalone_default
+
+# allow for communication between simulator and cab
+networks:
+  cab-standalone_default:
+    name: cab-standalone_default
+    external: true
